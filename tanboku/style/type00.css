@@ -1,0 +1,70 @@
+BODY{
+	background-color : #FFD700 ;
+	color : #000000 ;
+}
+A{
+	color : #000000 ;
+}
+H1{
+	font-family: serif;
+	font-size : 200% ;
+	background-image : url(/web/20030827091053im_/http://www005.upp.so-net.ne.jp/tanboku/gif/ka.gif) ;
+	text-align : center ;
+	color : #FFFFFF ;
+	margin-right: 2%;
+	margin-left: 2%;
+}
+P{
+	color : #000000 ;
+	margin-right: 5%;
+	margin-left: 5%;
+	line-height: 180% ; 
+}
+LI, H2{
+	color : #000000 ;
+	margin-right: 5%;
+	margin-left: 5%;
+	line-height: 130% ; 
+}
+DL{
+	margin-right: 2%;
+	margin-left: 2%;
+	color : #000000 ;
+	font-size: smaller ;
+}
+.koyuu{
+	font-weight: bold ;
+}
+.tyu{
+	margin-bottom : 500% ;
+}
+.h1{
+	color : #FFFFFF ;
+}
+.innyou{
+	margin-left: 10%;
+}
+.img-right{
+	float: right;
+}
+/*
+     FILE ARCHIVED ON 09:10:53 Aug 27, 2003 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 11:34:59 Jul 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 66.408
+  exclusion.robots: 0.088
+  exclusion.robots.policy: 0.08
+  RedisCDXSource: 0.999
+  esindex: 0.008
+  LoadShardBlock: 49.485 (3)
+  PetaboxLoader3.datanode: 63.021 (4)
+  CDXLines.iter: 13.488 (3)
+  load_resource: 73.204
+  PetaboxLoader3.resolve: 37.933
+*/

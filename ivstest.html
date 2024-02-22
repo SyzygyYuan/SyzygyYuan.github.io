@@ -1,0 +1,42 @@
+<html>
+
+<head>
+<meta charset="utf-8">
+<link href="style.css" rel="stylesheet" />
+<script type="text/javascript">
+<!--
+function ChangeChar(){
+    var i=0;   //getElementById('')
+    var ch=document.getElementById('character').value;
+    s=ch;
+    for(i=0xfe01;i<0xfe10;i++)
+        s=s+ch+'&#x'+i.toString(16)+';';
+    for(i=0xe0100;i<0xe01f0;i++)
+        s=s+ch+'&#x'+i.toString(16)+';';
+    //alert(s);
+    document.getElementById('display').innerHTML=s;
+}
+//-->
+</script>
+<style>
+.ss01 { font-feature-settings: "ss01"; }
+.ss02 { font-feature-settings: "ss02"; }
+.nalt { font-feature-settings: "nalt"; } 
+.ss03 { font-feature-settings: "ss03"; }
+.ss04 { font-feature-settings: "ss04"; }
+.ss05 { font-feature-settings: "ss05"; }
+.ss06 { font-feature-settings: "ss06"; }
+.ss07 { font-feature-settings: "ss07"; }
+</style>
+</head>
+
+<body>
+<h1>OpenType 特性测试</h1>
+<input id="fontname"/><input type="button" value="更换字体" 
+onclick="document.getElementById('display').style.fontFamily=document.getElementById('fontname').value;"/>
+<input id="character"/><input type="button" value="更换字" onclick="ChangeChar();"/>
+<input id="feature"/><input type="button" value="更换特性" onclick="
+document.getElementById('display').style.fontFeatureSettings=document.getElementById('feature').value;"/>
+<div id="display" style="font-size:72;font-family: 'Hiragino Kaku Gothic ProN';"></div>
+</body>
+</html>

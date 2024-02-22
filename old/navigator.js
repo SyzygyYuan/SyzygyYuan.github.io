@@ -1,0 +1,1 @@
+document.write(navigator.appName+" "+parseInt(navigator.appVersion))

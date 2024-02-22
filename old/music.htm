@@ -1,0 +1,44 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="zh-cn" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>播放试听</title>
+
+</head>
+
+<body>
+
+<div align="center">
+
+<table border="0" width="443" id="table1">
+	<tr>
+		<td>
+		<p align="center">文件:<span id="filename">未知</span> 歌曲：<span id="musicname">未知</span></td>
+	</tr>
+	<tr>
+		<td>
+		<p align="center"><noembed>无法播放,浏览器不支持插件</noembed><embed id="player" width="373" height="128" src="" /></td>
+	</tr>
+</table>
+</div>
+<script type="text/javascript">
+<!--
+var fnuse = location.search;
+var start = fnuse.indexOf("?");
+if (start!=-1){
+var fn = fnuse.substring(start+1,fnuse.length)
+    filename.innerHTML=fn.link(fn)
+    player.src=fn
+}
+var mnuse = location.hash;
+start = mnuse.indexOf("#")
+if (start!=-1){
+var mn = mnuse.substring(start+1,mnuse.length)
+    musicname.innerText=mn;
+}
+//-->
+</script>
+</body>
+
+</html>

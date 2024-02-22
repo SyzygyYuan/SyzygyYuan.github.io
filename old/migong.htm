@@ -1,0 +1,208 @@
+<html><head><title>勇闯迷宫</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta name="keywords" content="迷宫，游戏，勇敢者，勇闯">
+<meta name="description" content="一个迷宫游戏，非常好玩，没有插件，纯Javascript制作，有积分系统！只要你的电脑支持Javascript，就可以玩罗！">
+</head><body>
+<basefont FACE="verdana" size="2">
+<SCRIPT>
+function ShowMenu(bMenu) {
+document.all.idFinder.style.display = (bMenu) ? "none" : "block" 
+document.all.idMenu.style.display = (bMenu) ? "block" : "none"
+idML.className = (bMenu) ? "cOn" : "cOff"
+idRL.className = (bMenu) ? "cOff" : "cOn"
+return false
+}
+</SCRIPT>
+<STYLE>
+<!--
+A.cOn {text-decoration:none;font-weight:bolder}
+#article {font: 12pt Verdana, geneva, arial, sans-serif;  background: white; color: black; padding: 10pt 15pt 0 5pt}
+#article P.start {text-indent: 0pt}
+#article P {margin-top:0pt;font-size:10pt;text-indent:12pt}
+#article #author {margin-bottom:5pt;text-indent:0pt;font-style: italic}
+#pageList P {padding-top:10pt}
+#article H3 {font-weight:bold}
+#article DL, UL, OL {font-size: 10pt}
+-->
+</STYLE>
+
+<SCRIPT>
+<!--
+function addList(url,desc) {
+if ((navigator.appName=="Netscape") || (parseInt(navigator.appVersion)>=4)) {
+var w=window.open("","_IDHTML_LIST_","top=0,left=0,width=475,height=150,history=no,menubar=no,status=no,resizable=no")
+var d=w.document
+if (!w._init) {
+d.open()
+d.write("<TITLE>Loading...</TITLE><EM>加载……</EM>")
+d.close()
+
+w.opener=self    
+window.status="Personal Assistant (Adding): " + desc
+} else {
+window.status=w.addOption(url,desc)    
+w.focus()
+}
+}
+else
+alert("不能运行在你的这个浏览器中。")
+return false
+}
+// -->
+</SCRIPT>
+
+<STYLE TYPE="text/css">
+#board TD {width: 15pt; height: 15pt; font-size: 2pt; }
+TD.foot {font-size: 10pt;}
+#board TD.start {font-size: 8pt; border-left: 2px black solid; background:yellow; border-top: 2px black solid;text-align: center; color: red}
+#board TD.end {font-size: 8pt; text-align: center; color: green}
+#message {margin: 0pt; padding: 0pt; text-align: center}
+</STYLE>
+<SCRIPT LANGUAGE="JavaScript">
+    var maze = new Array()
+    var h=0;
+    var r=0; 
+    var e=0;
+    var a=0;
+    var sides = new Array("Border-Top", "Border-Right")
+    for (var rows=0; rows<13; rows++)
+      maze[rows] = new Array()
+    maze[0][0] = new Array(1,1,1,1,1,1,1,1,1,1,1,1)
+    maze[0][1] = new Array(0,0,1,0,1,0,0,0,0,1,0,1)
+    maze[1][0] = new Array(1,0,0,0,1,0,1,1,1,0,1,1)
+    maze[1][1] = new Array(0,1,1,0,0,1,1,0,0,1,0,1)
+    maze[2][0] = new Array(1,0,1,0,1,0,0,1,1,0,1,1)
+    maze[2][1] = new Array(0,0,0,0,1,1,1,0,0,0,0,1)
+    maze[3][0] = new Array(0,1,1,1,1,1,0,0,0,0,1,1)
+    maze[3][1] = new Array(1,0,0,1,0,0,0,1,1,0,0,1)
+    maze[4][0] = new Array(0,0,0,0,0,0,1,1,1,1,1,1)
+    maze[4][1] = new Array(1,1,1,1,1,0,0,0,0,0,1,1)
+    maze[5][0] = new Array(0,0,0,0,1,0,1,1,1,1,0,0)
+    maze[5][1] = new Array(1,1,1,1,1,1,0,0,0,1,0,1)
+    maze[6][0] = new Array(0,0,0,0,0,0,1,1,0,1,0,1)
+    maze[6][1] = new Array(1,1,1,1,1,1,0,0,0,1,0,1)
+    maze[7][0] = new Array(1,0,1,0,0,0,1,0,1,1,0,1)
+    maze[7][1] = new Array(1,1,1,0,1,0,0,1,0,1,1,1)
+    maze[8][0] = new Array(0,0,0,1,0,0,1,1,0,0,0,0)
+    maze[8][1] = new Array(0,1,0,1,1,0,0,0,1,1,0,1)
+    maze[9][0] = new Array(0,0,0,0,0,1,1,1,1,0,1,1)
+    maze[9][1] = new Array(1,1,1,1,0,0,0,0,0,1,1,1)
+    maze[10][0] = new Array(0,0,0,0,0,1,1,1,1,1,0,0)
+    maze[10][1] = new Array(1,1,1,0,1,0,0,0,0,1,0,1)
+    maze[11][0] = new Array(0,0,1,1,1,1,1,1,1,0,0,0)
+    maze[11][1] = new Array(1,0,1,0,0,0,0,0,0,0,1,1)
+    maze[12][0] = new Array(0,0,0,0,0,1,1,1,1,0,1,0)
+    maze[12][1] = new Array(1,1,0,1,0,0,0,1,0,0,1,1)
+
+    function testNext(nxt) {
+      if ((board.rows[start.rows].cells[start.cols].style.backgroundColor=="yellow") && (nxt.style.backgroundColor=='yellow')) {
+        message.innerText="你重复走了……算了，破例允许你吧。"
+        r++;
+        board.rows[start.rows].cells[start.cols].style.backgroundColor=""
+        return false
+      }
+      return true
+    }    
+
+    function moveIt() {
+      if (!progress) return
+      switch (event.keyCode) {
+        case 37: // left
+          if (maze[start.rows][1][start.cols-1]==0) {
+            if (testNext(board.rows[start.rows].cells[start.cols-1]))
+              message.innerText="往东一步"
+            start.cols--
+            document.all.board.rows[start.rows].cells[start.cols].style.backgroundColor="yellow"
+          } else {
+          message.innerText="咣！撞墙啦！"
+          h++;}
+              a++;
+          break;
+        case 38: // up
+          if (maze[start.rows][0][start.cols]==0) {
+            if (testNext(board.rows[start.rows-1].cells[start.cols]))
+              message.innerText="往北一步"
+            start.rows--
+            document.all.board.rows[start.rows].cells[start.cols].style.backgroundColor="yellow"
+          } else{
+          message.innerText="咣！撞墙啦！"
+          h++;}
+          a++;
+          break;
+        case 39: // right
+          
+          if (maze[start.rows][1][start.cols]==0) {
+            if (testNext(board.rows[start.rows].cells[start.cols+1]))
+              message.innerText="往西一步"
+            start.cols++
+            document.all.board.rows[start.rows].cells[start.cols].style.backgroundColor="yellow"
+          }
+          else{
+          message.innerText="咣！撞墙啦！"
+          h++;}
+          a++;
+          break;
+        case 40: //down
+          if (maze[start.rows+1]==null) return
+          if (maze[start.rows+1][0][start.cols]==0) {
+            if (testNext(board.rows[start.rows+1].cells[start.cols]))
+              message.innerText="往南一步"
+            start.rows++
+            document.all.board.rows[start.rows].cells[start.cols].style.backgroundColor="yellow"
+          } else{
+          message.innerText="咣！撞墙啦！"
+          h++;}
+          a++;
+          break;
+      }
+      if (document.all.board.rows[start.rows].cells[start.cols].innerText=="终") {
+        message.innerText="恭喜恭喜，你赢啦！"
+        e=Math.floor(100-h-r-a/69)+1;
+        document.getElementById("hitTest").innerText=h;
+        document.getElementById("reWalk").innerText=r;
+        document.getElementById("reSult").innerText=e;
+        document.getElementById("allWalk").innerText=a;
+        alert("你赢啦你赢啦！！！恭喜获得"+e+"分！F5重新开局。");
+        progress=false
+      }
+    }
+</SCRIPT>
+<CENTER><NOSCRIPT><EM>警告：你的电脑不支持JAVASCRIPT！！！！！</EM></NOSCRIPT></CENTER>
+<P ALIGN=center>请使用键盘上的→←↑↓键进行游戏</P>
+<P ALIGN=center>可以重复走，但会扣分。</P>
+<P ALIGN=center>会导致扣分的所有可能：走的次数，重复走的次数，撞墙的次数。</P><BR>
+<p><TABLE ID=board ALIGN=CENTER CELLSPACING=0 CELLPADDING=0>
+  <SCRIPT LANGUAGE="JavaScript">
+    for (var row = 0; row<maze.length; row++) {
+      document.write("<TR>") 
+
+      for (var col = 0; col<maze[row][0].length; col++) {
+        document.write("<TD STYLE='")
+        for (var cell = 0; cell<2; cell++) {
+          if (maze[row][cell][col]==1) 
+            document.write(sides[cell]+": 2px black solid;")
+        }
+        if ((0==col) && (0!=row))
+          document.write("border-left: 2px black solid;")
+        if (row==maze.length-1)
+          document.write("border-bottom: 2px black solid;")
+        if ((0==row) && (0==col)) 
+          document.write(" background-color:yellow;' class=start>始</TD>")
+        else
+         if ((row==maze.length-1) && (col==maze[row][0].length-1))
+           document.write("' class=end>终</TD>")
+         else
+          document.write("'>&nbsp;</TD>")
+      }
+      document.write("</TR>")
+    }
+    var start = new Object
+    start.rows = 0
+    start.cols = 0
+    progress=true
+    document.onkeydown = moveIt;
+  </SCRIPT>
+  </TABLE>
+  <P ID="message">　</P><p>撞墙次数：<Span id="hitTest"></SPAN>  重复走次数：<span id="reWalk"></span> 共走次数:<span id="allWalk"></span>  综合分数：<span id="reSult"></span>  </p>
+</body></html>

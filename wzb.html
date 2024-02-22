@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>文字编</title>
+
+</head>
+
+<body>
+	<style type="text/css">
+	div { display:inline-block; }
+	</style>
+	<input type="text" onchange="document.getElementById('display').innerHTML='';for(i=0;i<this.value.length;i++){fetchData(this.value[i]);}"/>
+	<button onclick="selectSource('開成');">開成</button>
+	<button onclick="selectSource('廣韻');">廣韻</button>
+	<button onclick="selectSource('增韻');">增韻</button>
+	<button onclick="selectSource('正韻');">正韻</button>
+	<button onclick="selectSource('字典');">字典</button>
+	
+	<p id="display">
+	</p>
+	<script type="text/javascript">
+		function fetchData(c){
+			const xhrFile = new XMLHttpRequest();
+			xhrFile.open("GET", "zi\\"+c.codePointAt(0)+".txt", true);
+			xhrFile.onload  = function() {
+				if(xhrFile.status == 200){
+					const allText = xhrFile.response;
+					document.getElementById("display").innerHTML+=(allText);
+				}
+			}
+			xhrFile.send();
+		}
+		function selectSource(c){
+			s=document.getElementsByClassName("littlebox");
+			for(i=0;i<s.length;i++){
+				if(s[i].innerText.indexOf(c)==-1){
+					s[i].style.display="none";
+				}else{
+					s[i].style.display="";
+				}
+			}
+		}
+	</script>
+</body>
+</html>

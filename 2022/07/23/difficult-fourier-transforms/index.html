@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算学 Mathematics," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文旨在摘录一些需要技巧的 Fourier 变换计算. Bessel 位势问题. 已知 $\hat{B}&#x3D;\frac1{1+|y|^2}$，其中 $y\in \mathbb{R}^n$. 求 $B&#x3D;\left(\frac1{1+|y|^2}\right)^\vee$.解. 利用如下积分  \frac1{1+|y|^2} &#x3D; \int_0^\infty e^{-t(1+|y|^2)} dt,则  B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fourier 变换例解">
+<meta property="og:url" content="https://syzygyyuan.github.io/2022/07/23/difficult-fourier-transforms/index.html">
+<meta property="og:site_name" content="亂齋襍志">
+<meta property="og:description" content="本文旨在摘录一些需要技巧的 Fourier 变换计算. Bessel 位势问题. 已知 $\hat{B}&#x3D;\frac1{1+|y|^2}$，其中 $y\in \mathbb{R}^n$. 求 $B&#x3D;\left(\frac1{1+|y|^2}\right)^\vee$.解. 利用如下积分  \frac1{1+|y|^2} &#x3D; \int_0^\infty e^{-t(1+|y|^2)} dt,则  B">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-07-23T08:00:05.000Z">
+<meta property="article:modified_time" content="2022-08-02T08:58:26.423Z">
+<meta property="article:author" content="Syzygy Yuan">
+<meta property="article:tag" content="算学 Mathematics">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://SyzygyYuan.github.io/2022/07/23/difficult-fourier-transforms/"/>
+
+
+
+
+
+  <title>Fourier 变换例解 | 亂齋襍志</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">亂齋襍志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">井ヲ掘ルヿ九仞、而モ泉ニ及バザレバ、猶ホ井ヲ棄ツト為ス也</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://SyzygyYuan.github.io/2022/07/23/difficult-fourier-transforms/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="亂齋襍志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Fourier 变换例解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-07-23T16:00:05+08:00">
+                2022-07-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E6%9D%82%E5%BF%97/" itemprop="url" rel="index">
+                    <span itemprop="name">读书杂志</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文旨在摘录一些需要技巧的 Fourier 变换计算.</p>
+<h2 id="Bessel-位势"><a href="#Bessel-位势" class="headerlink" title="Bessel 位势"></a>Bessel 位势</h2><p><strong>问题</strong>. 已知 $\hat{B}=\frac1{1+|y|^2}$，其中 $y\in \mathbb{R}^n$. 求 $B=\left(\frac1{1+|y|^2}\right)^\vee$.<br><strong>解</strong>. 利用如下积分</p>
+<script type="math/tex; mode=display">
+\frac1{1+|y|^2} = \int_0^\infty e^{-t(1+|y|^2)} dt,</script><p>则</p>
+<script type="math/tex; mode=display">
+B=\frac1{(2\pi)^{n/2}} \int_0^\infty e^{-t}
+\left(\int_{\mathbb{R}^n}e^{ix\cdot y-t|y|^2}dy\right) dt.</script><p>接下来我们把这个积分按一个坐标一个坐标拆开来计算. 为此，我们令 $z=\sqrt{b} x-\frac{a}{2\sqrt{b}} i$，计算</p>
+<script type="math/tex; mode=display">
+\frac{e^{-a^2/4b}}{\sqrt{b}}\int_\Gamma e^{-z^2} dz
+=\int_{-\infty}^{+\infty} e^{iax-bx^2} dx,</script><p>这里 $\Gamma$ 是围道 ${\operatorname{Im}(z)=-\frac{a}{2b^{1/2}} }$，积分方向自左向右. $e^{-z^2}$ 是全纯函数，所以我们可以形变到横轴，得到</p>
+<script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty} e^{iax-bx^2} dx= e^{-a^2/4b}\left(\frac{\pi}{b}\right)^{1/2}.</script><p>于是</p>
+<script type="math/tex; mode=display">
+\int_{\mathbb{R}^n}e^{ix\cdot y-t|y|^2} dy=
+\prod_{j=1}^n 
+\int_{-\infty}^{+\infty} e^{i
+x_j
+y_j-t
+y_j^2} d
+y=\left(\frac{\pi}t\right)^{n/2}e^{-\frac{|x|^2}{4t}}.</script><p>故</p>
+<script type="math/tex; mode=display">
+B(x) = \frac1{2^{n/2}}\int_0^{+\infty} \frac{e^{-t-\frac{|x|^2}{4t}}{t^{n/2}}}dt.</script><p>这个 $B$ 称为 Bessel 位势. 摘自 [1].</p>
+<p>至于这个积分为什么可以换序，我差点去 Stack Exchange 上问了，好在最后好像想出来了. 以下是我差点发出去的提问：<br>How can I justify the interchange of integrals in the derivation of the Bessel potential in Evans’ <em>Partial Differential Equations</em>?</p>
+<p>In his <em>Partial Differential Equations</em>, p187, Evans adopts the following method to calculate the inverse Fourier transform of $\frac1{1+|y|^2}$, where $y\in \mathbb{R}^n$: he uses $\frac1{1+|y|^2}=\int_0^\infty e^{-t(1+|y|^2)}\,dt$, and claims that</p>
+<script type="math/tex; mode=display">
+\left(\frac1{1+|y|^2}\right)^\vee=\frac1{(2\pi)^{n/2}} \int_0^\infty e^{-t}
+\left(\int_{\mathbb{R}^n}e^{ix\cdot y-t|y|^2}\,dy\right) dt,\quad (*)</script><p>thus shifts attention to the evaluation of $\int_{\mathbb{R}^n}e^{ix\cdot y-t|y|^2}\,dy$.<br>However I can’t see why (*) is correct.</p>
+<p><strong>My attempt:</strong> I try to simplify the notation to $\int \left(\int_0^\infty f(t,y) \,dt\right) e^{ixy} dy$, and let $I_b^a(y) =\int_b^a f(t,y) \,dt$. Then we have to show</p>
+<script type="math/tex; mode=display">
+\int\lim_{a\to +\infty} I_0^a(y)e^{ixy} \,dy=\int_0^{+\infty}\int f(t,y)e^{ixy} \,dydt.</script><p>Maybe we should first admit that</p>
+<script type="math/tex; mode=display">
+\int I_0^b(y)e^{ixy} \,dy=\int_0^{b}\int f(t,y)e^{ixy} \,dydt</script><p>and then prove that</p>
+<script type="math/tex; mode=display">
+\int\lim_{a\to +\infty} I_0^a(y)e^{ixy}\,dy=\lim_{a\to +\infty} \int I_0^a(y)e^{ixy} \,dy</script><p>which is the same as</p>
+<script type="math/tex; mode=display">
+\left|\int I_b^\infty e^{ixy} dy\right| \text{ can be arbitrarily small as long as } b \text{ is sufficiently large,}</script><p>which in turn is the same as</p>
+<script type="math/tex; mode=display">
+\int\frac{e^{-b(1+|y|^2)+ixy}}{1+|y|^2}\,dy \to 0.</script><p>So I think it remains to show<br>$<br>\int\frac{e^{-b(1+|y|^2)}}{1+|y|^2}\,dy\to 0<br>$.<br> So I rewrite the integral as</p>
+<script type="math/tex; mode=display">
+\int \frac{e^{-b(1+|y|^2)}}{1+|y|^2} \,dy=\int_0^\infty
+ \int_{|y|=R} \frac{e^{-b(1+R^2)}}{1+|R|^2} dydR=\int_0^\infty \frac{e^{-b(1+R^2)}\omega_n R^{n-1}}{1+R^2} dR.</script><p>Then we can use Gamma function to prove that it is so.</p>
+<h2 id="e-x-2-的-Fourier-变换"><a href="#e-x-2-的-Fourier-变换" class="headerlink" title="$e^{-|x|^2}$ 的 Fourier 变换"></a>$e^{-|x|^2}$ 的 Fourier 变换</h2><p>从上面的计算（配方法）中我们看出 $e^{-t|\lambda|^2}$ 的 Fourier 反变换为 $\frac1{(2\pi)^{n/2}}\left(\frac{\pi}t\right)^{n/2}e^{-\frac{|x|^2}{4t}}=\left(\frac1{2t}\right)^{n/2}e^{-\frac{|x|^2}{4t}}$. 令 $t=\frac1{4A}$，则看出 $e^{-A|x|^2}$ 的 Fourier 变换为 $(2A)^{-n/2} e^{-\frac{|\lambda|^2}{4A}}$. 这一结果需要牢牢记住.</p>
+<p>另一种方法见 [2]，我们用分部积分法，设 $f(x)=e^{-x^2}$，</p>
+<script type="math/tex; mode=display">
+\hat{f}(\lambda)=\frac1{\sqrt{2\pi}}\int_{-\infty}^{+\infty} e^{-x^2}e^{-ix\lambda}\,dx=\frac1{\sqrt{2\pi}}\left(\frac1{-i\lambda}\left.e^{-x^2}e^{-ix\lambda}\right|_{-\infty}^{+\infty}-\frac{-2}{-i\lambda}\int_{-\infty}^{+\infty} xe^{-x^2}e^{-ix\lambda}\,dx\right),</script><p>所以实际上 $\hat{f}(\lambda)=\frac{2i}{\lambda}(xf(x))^{\vee}=-\frac2\lambda\frac{d}{d\lambda}\hat{f}(\lambda)$.<br>又 $\hat{f}(0)=\frac1{\sqrt{2}}$. 我们解 ODE 可得</p>
+<script type="math/tex; mode=display">
+\hat{f}(\lambda)=\frac1{\sqrt{2}}e^{-\lambda^2/4}.</script><p>也许一种更对称的写法是 $e^{-x^2/2}\mapsto e^{-\lambda^2/2}$. </p>
+<p>注意正负号！</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li>Evans. <em>Partial Differential Equations</em>.</li>
+<li>周蜀林. <em>偏微分方程</em>.</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AE%97%E5%AD%A6-Mathematics/" rel="tag"># 算学 Mathematics</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/07/22/old-posts/" rel="next" title="游离頁面目錄">
+                <i class="fa fa-chevron-left"></i> 游离頁面目錄
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/07/29/beneficial-talks/" rel="prev" title="茶余小偶谈">
+                茶余小偶谈 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://hulenkius.vercel.app/" target="_blank" title="遠見齋">
+                      
+                        <i class="fa fa-fw fa-globe"></i>遠見齋</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zi.tools/" target="_blank" title="字統">
+                      
+                        <i class="fa fa-fw fa-globe"></i>字統</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.bananaspace.org/" target="_blank" title="香蕉空间">
+                      
+                        <i class="fa fa-fw fa-globe"></i>香蕉空间</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stacks.math.columbia.edu/" target="_blank" title="叠计划">
+                      
+                        <i class="fa fa-fw fa-globe"></i>叠计划</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bessel-%E4%BD%8D%E5%8A%BF"><span class="nav-number">1.</span> <span class="nav-text">Bessel 位势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#e-x-2-%E7%9A%84-Fourier-%E5%8F%98%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text">$e^{-|x|^2}$ 的 Fourier 变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script type="text/javascript">
+    s=document.getElementsByClassName("han_ext");
+    for(i=0;i<s.length;i++){
+        s[i].innerHTML='<a target="_blank" rel="noopener" href="https://zi.tools/zi/'+s[i].innerText+'" style="cursor: help; border-bottom: 0px;">'+s[i].innerHTML
+                        +"</a>";
+    }
+</script>
+<div class="copyright">&copy; 2022 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Syzygy Yuan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

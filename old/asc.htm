@@ -1,0 +1,37 @@
+﻿<html>
+
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>ASCII 实用工具</title>
+<script language="javascript" type="text/javascript">
+<!--  在旧版本浏览器中隐藏 --
+//-- 代码开始 --
+function showAscii(){
+    var win2=window.open("ascii.htm");
+}
+//-- 代码结束 -->
+</script>
+</head>
+
+<body>
+
+<h1>ASCII 实用工具</h1>
+<hr />
+<ol>
+	<li>把字符转换成ASCII码。</li>
+
+	<p>输入字符：<input type="text" id="Char" size="1" maxlength="1"> <input type="button" value="显示" onclick="alert(Char.value.charAt(0)+' 的ASCII码是 '+Char.value.charCodeAt(0));"></p>
+	<br />
+
+	<li>输入ASCII码，转换成字符。</li>
+
+	<p>输入ASCII码：<input type="text" id="Asc" size="5"> <input type="button" value="显示" onclick="alert(Asc.value+' 的对应字符是 '+String.fromCharCode(parseInt(Asc.value)));"></p><br />
+
+
+
+<li>ASCII码表。<button onclick="showAscii()">请按这里</button>(可能有些慢)</li>
+</ol>
+</body>
+
+</html>

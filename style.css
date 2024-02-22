@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+
+.japanese
+{ font-family:"ten-mincho","Iwata Mincho Old W55 M","GenWanMin JP","I.Ming","MS Mincho","Hanazono Mincho B",HanaMinB,"BabelStone Han";}
+
+.chinese
+{ font-family: cwTeXMing,HanWangMingMedium,"GenWanMin TW",PMingLiU,"Simsun (Founder Extended)";}
+
+.simpch
+{ font-family: "BabelStone Han","MingLiU"; }
+	
+body {background-color: #f8f4e6; font-size: 16pt; }
+
+a:link{color:#6c2c2f;}      /* 未访问链接*/
+a:visited {color:#432f2f}  /* 已访问链接 */
+a:hover {color:#a22041;}  /* 鼠标移动到链接上 */
+a:active {color:#b9d08b}  /* 鼠标点击时 */
+
+.annotation {font-size:80%; color:#47585c;}
+
+h1 {color : #165e83;}
+h2 {color : #769164;}
+
+thead {background-color: #c89932; color:#fdeff2}
+
+rt {color : #1e50a2;}
+
+strong { color : #752100;}
+
+strong.chinese { font-family: "GenWanMin TW";}
+
+.okurigana { color: #f08300;}
+
+.kaeriten { color: #47885e; }

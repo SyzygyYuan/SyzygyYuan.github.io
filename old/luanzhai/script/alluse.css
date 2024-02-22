@@ -1,0 +1,7 @@
+em {font-family: 华文楷体; text-decoration:none };
+h1 { text-align:center; font-family : 黑体}
+h2 { text-align:center; font-style:italic }
+a:link       { color: #000000; text-decoration: none }
+a:visited    { color: #000000 }
+a:hover      { text-decoration: underline; font-weight: bold }
+a:active     { text-decoration: underline }

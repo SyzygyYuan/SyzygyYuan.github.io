@@ -1,0 +1,8 @@
+<CTPPlugin xmlns="http://schema.ctext.org/Plugin">
+<Plugin>
+<ShortName>ZiTools</ShortName>
+<Description>Look up in Zi.Tools.</Description>
+<Url template="https://zi.tools/{searchTerms}" pluginType="character" fieldEncoding="utf8" method="get"/>
+<Update src="https://syzygyyuan.github.io/zitools.xml"/>
+</Plugin>
+</CTPPlugin>

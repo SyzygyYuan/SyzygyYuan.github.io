@@ -1,0 +1,88 @@
+<html>
+<head>
+<bgsound src="5.12.mp3" loop="-1"> 
+<title>国殇</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Language" content="zh-cn">
+<script type="text/javascript">
+<!--
+function goTop(){
+ scroll(0,0)
+}
+
+function CloseWin(msg){
+if(confirm(msg)){
+ window.opener=null;
+ window.close()
+}
+}
+function TestBrowser(){
+ie=((navigator.appName=="Microsoft Internet Explorer")&&(parseInt(navigator.appVersion)>=4))
+if(!ie){
+if(confirm("你的浏览器不是Microsoft Internet Explorer 4或更高版本，\r \n确定关闭吗？")){
+window.opener==null;
+window.close()
+}
+}else{
+alert("你的浏览器通过了验证，点击确定继续。")
+}}
+function MoveOptions(){
+if(document.layer) return false;
+btnlyr.style.left=document.body.clientLeft+document.body.scrollLeft+10
+btnlyr.style.top=document.body.clientTop+document.body.scrollTop+10
+setTimeout("MoveOptions()",10)
+}
+TestBrowser()
+//-->
+</script>
+<style type="text/css">
+<!--
+a:link {  color: #FFFFFF;text-decoration:none;}
+a:hover {  color: #FFFFFF; text-decoration:none}
+a:active {  color: #FFFFFF; text-decoration:none}
+a:visited {  color: #FFFFFF; text-decoration:none}
+-->
+</style>
+</head>
+<body style="filter:Gray" bgcolor="black" text="white" onload="MoveOptions()">
+<div id="btnlyr" style="position:absolute; width:72px; height:33px; z-index:1"> 
+  <input type="button" name="showColor" onClick="body.style.filter='';showColor.style.display='none';showGray.style.display=''" title="设置成彩色版本" value="彩色版本">
+  <input type="button" name="showGray" style="display:none" onClick="body.style.filter='Gray';showColor.style.display='';showGray.style.display='none';" title="设置成黑白版本" value="黑白版本">
+</div>
+<div id="fir" style=""> 
+  <center>
+       <p><font face="黑体"><font style="font-size:36pt"><a name="top">国殇</a></font><br>
+      <font style="font-size:72pt" >深切哀悼</font><br>
+      <font style="font-size:48pt">四川8.0级大地震</font><br>
+      <font style="font-size:36pt">遇难同胞</font></font></p>
+    <font color="white"><Br>
+    <marquee width="225px" direction="up" scrolldelay="150" height="150px"><img src="5.12.jpg" height="150px" width="225px"><br>
+    <img src="5.12.1.jpg" height="150px" width="225px"><br>
+    <img src="5.12.2.jpg" height="150px" width="225px"><br>
+    <img src="5.12.3.jpg" height="150px" width="225px"><br>
+    </marquee> </font>
+    <p><font color="white"><Br>
+      </font><font face="楷体_GB2312"  style="font-size:26pt">愿生者坚强，愿逝者安息<br>
+      </font> <font style="font-size:22pt">2008年5月19日-21日</font><br>
+      <font style="font-size:22pt">全国哀悼日</font></p>
+    <p>[ <span onclick="goTop()" style="CURSOR:HAND" title="顶部">TOP</span> ]|[<span onClick="sed.style.display='';fir.style.display='none';" Style="CURSOR:HAND" title="下一页"> 
+       -&gt;</span> ]|[ <span onClick="location='index.htm'" style="CURSOR:HAND" title="主页">HOME</span> 
+      ]|[<span onClick="CloseWin('关闭页面?')" style="CURSOR:HAND" title="关闭"> X </span>]</p>
+  </center>
+</div>
+<div id="sed" style="display:none" align="center"> <font color="#FFFFFF" > 
+  <p>
+	<object classid="clsid:D27CDB6E-AE6D-11CF-96B8-444553540000" id="obj1" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" border="0" width="550" height="400">
+		<param name="movie" value="5.12.swf">
+		<param name="quality" value="High">
+		<embed src="5.12.swf" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" name="obj1" width="550" height="400" quality="High"></object>
+	<font color="white">&nbsp;</embed></font></p>
+  </font>
+  <p><font size="6" face="楷体_GB2312">虽然无情的地震夺走了许多汶川人民的生命，<br>
+    可是我们坚信，汶川人民一定能挺起来的</font><font size="6" face="楷体_GB2312" color="#FFFFFF">！</font></p>
+  <p><font size="5" face="黑体">汶川，挺住！汶川 ，加油！</font></p>
+  <p>[ <a href="javascript:goTop()" title="顶部">TOP</a> ]|[<span onClick="fir.style.display='';sed.style.display='none';" Style="CURSOR:HAND" title="上一页"> 
+    &lt;-</span> ]|[ <span onClick="location='index.htm'" Style="CURSOR:HAND" title="主页">HOME</span> 
+    ]|[<span onClick="CloseWin('关闭页面?')" Style="CURSOR:HAND" title="关闭"> X </span>]</p>
+</div>
+</body></html>

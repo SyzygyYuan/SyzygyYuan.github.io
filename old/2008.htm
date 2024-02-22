@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>2008</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script language="JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function CloseWin(){
+if(confirm("关闭?")){
+window.opener=null;
+window.close()
+}}
+function  reboot(){
+location.reload()
+}
+
+function TestBrowser(){
+ie=((navigator.appName=="Microsoft Internet Explorer")&&(parseInt(navigator.appVersion)>=4))
+if(!ie){
+ if(confirm("你的浏览器不是Microsoft Internet Explorer 4或更高版本，\r \n确定关闭吗？")){
+  window.opener==null;
+  window.close()
+ }
+}else{
+  alert("你的浏览器通过了验证，点击确定继续。")
+}
+}
+TestBrowser()
+//-->
+</script>
+</head>
+
+<body onLoad="MM_preloadImages('button76.jpg')">
+<p><img src="5rds.gif"> <font size="5" face="楷体_GB2312">奥运倒计时</font> <a href="javascript:reboot()">刷新</a> 
+</p>
+<div align="center" style="display:none" id="ol"><font size="5">今天距离北京奥运会开幕还有<b><font face="Arial" color="red"> 
+  <script language="VBScript">
+document.write(Datediff("d",Date(),"2008-8-8"))
+</script>
+  </font></b> 天</font></div>
+<p align="center" style=""><font size="5"> 今天是北京奥运会开幕<b><font face="Arial" color="red"> 
+  <script language="VBScript">
+document.write(Datediff("d","2008-8-8",Date()))
+</script>
+  </font></b> 天</font></p>
+<p align="center"><a href="javascript:CloseWin()" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Close','','button76.jpg',1)"><img name="Close" border="0" src="button77.jpg" width="44" height="17"></a> 
+</p>
+<hr>
+<p align="center">2008 我们是奥运的主人</p>
+</body>
+</html>

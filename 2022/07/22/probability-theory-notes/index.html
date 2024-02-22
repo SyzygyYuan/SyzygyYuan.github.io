@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算学 Mathematics," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Markov 不等式 P(|\lambda|\ge \epsilon)\le \frac{E|\lambda|^\alpha}{\epsilon^\alpha}$\alpha&#x3D;2$ 即Chebyshev 不等式.$\def\R{\mathbb{R}}\def\N{\mathbb{N}}$ 证明：  P(|X|\ge \varepsilon) &#x3D; E\mathbf{1}_{(|X|\ge\epsil">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概率论基础笔记（旧文）">
+<meta property="og:url" content="https://syzygyyuan.github.io/2022/07/22/probability-theory-notes/index.html">
+<meta property="og:site_name" content="亂齋襍志">
+<meta property="og:description" content="Markov 不等式 P(|\lambda|\ge \epsilon)\le \frac{E|\lambda|^\alpha}{\epsilon^\alpha}$\alpha&#x3D;2$ 即Chebyshev 不等式.$\def\R{\mathbb{R}}\def\N{\mathbb{N}}$ 证明：  P(|X|\ge \varepsilon) &#x3D; E\mathbf{1}_{(|X|\ge\epsil">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-07-22T06:52:15.000Z">
+<meta property="article:modified_time" content="2022-07-22T14:03:31.442Z">
+<meta property="article:author" content="Syzygy Yuan">
+<meta property="article:tag" content="算学 Mathematics">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://SyzygyYuan.github.io/2022/07/22/probability-theory-notes/"/>
+
+
+
+
+
+  <title>概率论基础笔记（旧文） | 亂齋襍志</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">亂齋襍志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">井ヲ掘ルヿ九仞、而モ泉ニ及バザレバ、猶ホ井ヲ棄ツト為ス也</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://SyzygyYuan.github.io/2022/07/22/probability-theory-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="亂齋襍志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">概率论基础笔记（旧文）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-07-22T14:52:15+08:00">
+                2022-07-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Markov-不等式"><a href="#Markov-不等式" class="headerlink" title="Markov 不等式"></a>Markov 不等式</h2><script type="math/tex; mode=display">
+P(|\lambda|\ge \epsilon)\le \frac{E|\lambda|^\alpha}{\epsilon^\alpha}</script><p>$\alpha=2$ 即Chebyshev 不等式.$\def\R{\mathbb{R}}\def\N{\mathbb{N}}$</p>
+<p>证明：</p>
+<script type="math/tex; mode=display">
+P(|X|\ge \varepsilon) = E\mathbf{1}_{(|X|\ge\epsilon)}\le E\frac{|X(\omega)|^\alpha}{\epsilon^\alpha} \mathbf{1}
+_{(|X|\ge\epsilon)}\le \cdots</script><h2 id="线性预测"><a href="#线性预测" class="headerlink" title="线性预测"></a>线性预测</h2><p>知道 $X$ ，用 $aX+b$ 预测 $Y$，如何确定 $a,b$？</p>
+<p>$E(Y-(a+bX))^2=\mathrm{Var}(Y-bx)+(EY-a-bEX)^2$</p>
+<p>条件：</p>
+<script type="math/tex; mode=display">
+EY-a-bEX=0
+\\ \mathrm{Var}=E(Y-bX)^2-(EY-bEX)^2=\left(b^2\sqrt{DX}-2b cov\right)</script><p>例：设 $(X,Y)$ 密度</p>
+<script type="math/tex; mode=display">
+f(x,y)=\begin{cases}\frac{1}{4ah}, -a+bx<y<a+bx, -h<x<h,\\ 0\end{cases}</script><p>设 $b&gt;0$.</p>
+<p>求：① $\rho_{XY}$ （答案：$\rho=\frac{bh}{\sqrt{a^2+b^2h^2}}$）②最佳线性预测，$X$ 对 $Y$，（期待是 $Y=bx$）</p>
+<h2 id="★条件数学期望"><a href="#★条件数学期望" class="headerlink" title="★条件数学期望"></a>★条件数学期望</h2><p>1.定义.离散型.设 $x\in {x_i|i\in \N}$, y取 $y_j$.假设 $P(Y=y_j)&gt;0, j\ge 1$</p>
+<p>令 $m(y_j)=E(X|Y=y_j)=\sum x_i p(x_i|Y=y_j)$</p>
+<p>它是一个随机变量.</p>
+<p>连续型.</p>
+<p>$E(E(X|Y))=EX$.</p>
+<p>$E(E(Y|X))=EY$ as long as $E|Y|&lt;\infty$</p>
+<p>和线性预测的关系. $E(Y-g(x))^2 \ge E(Y-E(Y|X))^2$</p>
+<p>就是最佳预测！可是应用中没有用.因为找不出来，只是理论上的[快哭了]</p>
+<p>例 $N, EN=50, X_i$ 第 $i$ 个人消费额.$EX_i=8$ 求 $EY=\sum^N X_i$.</p>
+<p>$EY=\sum^\infty E(\sigma^N x_i|N=n)p(N=n) = \sigma^\infty E(\sigma^|n X_i) p(N=n) =\sum^N nEX_i p(N=n)=50*8=400$</p>
+<p>用条件数学期望求期望.</p>
+<p>设 $E|X|&lt;\infty$，则 $E(X/Y)$ 存在.再求 E(E(X/Y))=EX.</p>
+<ul>
+<li>设$Y$是离散型，$B={y\in \R| P(Y=y)&gt;0}$，</li>
+</ul>
+<p>$EX=\sum_{y\in B} E(X/Y=y)P(Y=y)$</p>
+<ul>
+<li>设$Y$是连续型，以密度函数 $f_Y(y)$，则</li>
+</ul>
+<p>$EX=\int E(X/Y=y)f_Y(y)dy$</p>
+<ul>
+<li>特别 $X=\mathbb{1}_A, A$, $Y$ 是离散型.</li>
+</ul>
+<p>$P(A)=\sum_{y\in B} P(A/Y=y)P(Y=y)$</p>
+<ul>
+<li><p>$X=1_A$, $Y$ 有密度函数 $f_Y(y)$ （略）</p>
+</li>
+<li><p>设 $\Omega=\mathop{+}_{i} A_i$，$EX=\sum_i=1^n E(X/A_i) P(A_i)$</p>
+</li>
+</ul>
+<p>例子独立 $U_1, U_2, \ldots$ $\sim U(0,1)$.</p>
+<p>$N := \min{n\ge 1 : \sum_{i=1}^n U_i &gt;1}$</p>
+<p>$EN?$</p>
+<p>我们再另定义随机变量：$N(x)$，就是上述定义 $1$ 换为 $x$，所求即 $N(1)$.</p>
+<p>令.$m(X)=EN(X)$，如何求 $m(1)$？</p>
+<p>$m(X)=E(E(N(X)/U_1))=\int_0^1 E(N(X)|U_1 =y)dy$</p>
+<p>如果 $X&lt;1$，$m(X)=\int_0^X (m(X-y)+1) dy+(1-X)=1+\int_0^X m(y)dy$.</p>
+<p>$m(0)=1$.$m’(X)=m(X)$. $m(X)=e^X$.</p>
+<p>设 $X,Y$ 独立，连续型的随机变量，密度分别为 $f_X, f_Y$，求$X-Y$ 的spdf.</p>
+<p>先求分布.</p>
+<p>$P(X-Y&lt;z)=\int<em>\R P(X-Y&lt;z/Y=y)f_Y(y) dy=\int</em>\R F_X(y+z)f_Y(y)dy$</p>
+<p>$X-Y:=Z$ 之分布.如上所示，求导即可.</p>
+<p>$P(X-Y&lt;z)=\int^z f<em>Y(y) dy \int</em>\R f_X(x+y) dx$</p>
+<p>例4. $n$ 次重复独立事件，结果 $1, 2, \ldots, k$ 概率为 $p_1, p_2, \ldots, p_k$ $\sum p_k=1$ 令 $N_i$ 是 $n$ 次试验中 $i$ 出现的次数.</p>
+<p>$E(N_j | N_i &gt;0) (j\ne i)$ </p>
+<p>$np_j=EN_j = E(N_j | N_i=0) P(N_i=0)+E(N_j|N_i&gt;0)P(N_i&gt;0)$</p>
+<p>看一圈下来，要求的是 $N(N_j|N_i=0)$. 但是就是 $np_j/(1-p_i)$</p>
+<ol>
+<li>$|\Phi(x)|\le 1$</li>
+<li>对于任意复的随机变量.$E|X|\ge |EX|$.</li>
+<li>一致连续</li>
+<li>矩可以被求导出来</li>
+<li>非负定</li>
+</ol>
+<h2 id="收敛之间的关系"><a href="#收敛之间的关系" class="headerlink" title="收敛之间的关系"></a>收敛之间的关系</h2><p>(1) $\eta_n \stackrel{d}{\to} \eta$</p>
+<p>$\Uparrow$</p>
+<p>(2)$\eta_n \stackrel{P}{\to}\eta$ $\Leftarrow$ (4) $\eta_n\stackrel{\text{a.s.}}{\to}\eta$</p>
+<p>$\Uparrow$</p>
+<p>(3)$\eta_n\stackrel{L^r}\to eta$</p>
+<p><strong>反例</strong> (1)$\not\to$(2) 例如 $\eta_n=X \sim N(0,1)$，$\eta=-X$，当然它们有一样的分布函数，，，</p>
+<p>但是，$P(|\eta_n-\eta|&gt;\varepsilon)=P(|X-(-X|&gt;\varepsilon)=P(2|X|&gt;\varepsilon)=P(|X|&gt;\varepsilon/2)\not\to0$</p>
+<p>(2)$\not\to$(3) $(n,\mathscr{F}, P)=((0,1), \mathscr{B}, \lambda)$</p>
+<p>$\eta<em>n =n^{1/r} \mathbf{1}</em>{(0,1/n)}$，$\eta_n\stackrel{P}{\to}0$ 甚至 (4)</p>
+<p>但是 (3) 不对</p>
+<p>又可，$\eta_n=e^n \cdots$</p>
+<p>一个特例.</p>
+<p>设 $\eta_n \stackrel{d}{\to} c$，则 $\eta_n\stackrel{P}{\to} c$，证明 $\forall \varepsilon&gt;0, P(|\eta_n-c|\ge \varepsilon)\le P(\eta_n\le c-\varepsilon)+P(\eta_n\ge c+\varepsilon)=1-F_n(c+\varepsilon)+F_n(c-\epsilon+0)=1-1+0=0$</p>
+<p><strong>定理</strong> 设 $E|X|^n&lt;\infty$ 则 $\phi(t)=Ee^{ikx}$ 展开，</p>
+<script type="math/tex; mode=display">
+\phi(t)=\sum_{j=0}^n \frac{i^j EX^j}{j!} t^j +\frac{E|X|^n}{n!}t^n \delta(t)</script><script type="math/tex; mode=display">
+\lim_{t\to 0 } \delta(t)=0, \quad |\delta(t)|\le 4</script><p>证明.设 $f(t)$ 是实值，</p>
+<script type="math/tex; mode=display">
+f(t)=\sum_{j=0}^n \frac{f^{(j)}(0)}{j!} t^j+\frac{f^{(n)}(u)-f^{(n)}(0)}{n!}t^n</script><p>对实部和虚部作这样的展开.如</p>
+<script type="math/tex; mode=display">
+\Re\Phi(t)=\cdots+\frac{\Delta(\Re\Phi)}{E|X|^n}\frac{t^n E|X|^n}{n!}</script><script type="math/tex; mode=display">
+|Re \delta(t)|=|\frac{Re(i^nE(X^n(e^{ikt}-1))}{E|X|^n}|\le 2</script><p>于是！</p>
+<p>$\phi<em>{\xi_n} (t)=1+it\mu +o(t)$， $\phi</em>{\xi<em>n/n} (t)=Ee^{it\xi/n}=Ee^{+\cdots+\cdots+}=[\phi</em>{\xi_n}(t/n)]^n=(1+it\mu/n+o(t/n))^n\to e^{it\mu}$</p>
+<p>例1. 设 $\xi<em>k , k\ge 1$，i. i. d. $\sim U(0,1)$，$\eta_n = \sum</em>{j=1}^{12} \xi_{12(k-1)+j}-6$ $Dn_1=1$，个个都近似 $N(0,1)$</p>
+<p>例2. 要求 $x<em>1, x_2 ,… x_n$ 的和 $S$，设 $x_j$ 四舍五入后 $y_1, y_2, \ldots, y_n$, $S$ $T$ 是对应的和，则 $\eta_i=S-T=\sum</em>{j=1}^n (x<em>j-y_j)=\sum</em>{j=1}^n \xi_j, \xi_j\sim U(-0.5 \times 10^{-5},0.5\times 10^{-5})$，$|\eta|\le n\times 0.5\times 10^{-5}$<br>但是，如果用中心极限定理，$|\eta| \le 3\times 100 \times \frac{0.5\times 10^{-5}}{\sqrt{3}}$ (99.7%).</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AE%97%E5%AD%A6-Mathematics/" rel="tag"># 算学 Mathematics</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/07/22/textual-research-on-ancient-characters-on-coins-seen-in-lusin-s-diary/" rel="next" title="《魯迅日記》所見古泉文字攷">
+                <i class="fa fa-chevron-left"></i> 《魯迅日記》所見古泉文字攷
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/07/22/old-posts/" rel="prev" title="游离頁面目錄">
+                游离頁面目錄 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://hulenkius.vercel.app/" target="_blank" title="遠見齋">
+                      
+                        <i class="fa fa-fw fa-globe"></i>遠見齋</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zi.tools/" target="_blank" title="字統">
+                      
+                        <i class="fa fa-fw fa-globe"></i>字統</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.bananaspace.org/" target="_blank" title="香蕉空间">
+                      
+                        <i class="fa fa-fw fa-globe"></i>香蕉空间</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stacks.math.columbia.edu/" target="_blank" title="叠计划">
+                      
+                        <i class="fa fa-fw fa-globe"></i>叠计划</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Markov-%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">Markov 不等式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E9%A2%84%E6%B5%8B"><span class="nav-number">2.</span> <span class="nav-text">线性预测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%98%85%E6%9D%A1%E4%BB%B6%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B"><span class="nav-number">3.</span> <span class="nav-text">★条件数学期望</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B6%E6%95%9B%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">4.</span> <span class="nav-text">收敛之间的关系</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script type="text/javascript">
+    s=document.getElementsByClassName("han_ext");
+    for(i=0;i<s.length;i++){
+        s[i].innerHTML='<a target="_blank" rel="noopener" href="https://zi.tools/zi/'+s[i].innerText+'" style="cursor: help; border-bottom: 0px;">'+s[i].innerHTML
+                        +"</a>";
+    }
+</script>
+<div class="copyright">&copy; 2022 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Syzygy Yuan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

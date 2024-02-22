@@ -1,0 +1,52 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>Windows 技巧</title>
+<meta name="keywords" content="技巧,Windows,计算机,电脑">
+<meta name="description" content="Windows 技巧介绍">
+<script language=javascript>
+var AllTips=11
+function LoadTips(){
+var today=new Date()
+var sec=(today.getMonth()*30)+today.getDate()
+ nowTip.innerText=eval("document.all.Tips"+((sec % AllTips)+1)+".innerText")
+}
+function goNext(){
+var n = Math.floor(Math.random()*AllTips)+1
+ nowTip.innerText=eval("document.all.Tips"+n+".innerText");
+}
+
+</script>
+</head>
+
+<body link="#FF0000" vlink="#FF0000" alink="#008000" text="#FFFFFF" bgcolor="#000000" onload="LoadTips()">
+
+<p align="center"><i><font size="6" color="#FF0000">Windows 技巧</font></i></p>
+<p>　</p>
+<div align="center">
+	<table width="522" height="1">
+		<tr>
+<td height="1">
+<div id="nowTip"></div>
+<div id="Tips1" style="display:none">如果不知道如何操作，可以查看“帮助”信息。只需单击“开始”，然后单击“帮助”。</div>
+<div id="Tips2" style="display:none">「开始」菜单中的“关闭”命令使您能够安全地关闭计算机。</div>
+<div id="Tips3" style="display:none">用鼠标拖动任务栏，可以将其移到屏幕的任何一边。</div>
+<div id="Tips4" style="display:none">只需用鼠标右键单击任务栏的空白区域，然后单击“最小化所有窗口”，可以同时最小化所有打开的窗口。</div>
+<div id="Tips5" style="display:none">在清空回收站之前，被删除的文件和文件夹将一直存放在回收站中。</div>
+<div id="Tips6" style="display:none">要更改屏幕保护程序，请用鼠标右键单击“桌面”，然后单击“属性”。</div>
+<div id="Tips7" style="display:none">要选择多个文件或文件夹，在单击每个条目时，请按下 CTRL。</div>
+<div id="Tips8" style="display:none">要更改颜色方案，请用鼠标右键单击“桌面”，然后单击“属性”。</div>
+<div id="Tips9" style="display:none">将监视器放置在和眼睛相同高度的位置，可以减轻颈椎的紧张程度。</div>
+<div id="Tips10" style="display:none">可以使用“附件”中的“画图”程序绘制图片和查看位图文件。</div>
+<div id="Tips11" style="display:none">通过双击任务栏上的时钟可以设置计算机时钟。</div>
+</td>
+			<td height="1" width="71">
+			<p align="center"><a href="javascript:goNext()">下一技巧</a></td>
+		</tr>
+	</table>
+</div>
+
+</body>
+
+</html>

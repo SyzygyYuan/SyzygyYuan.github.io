@@ -1,0 +1,54 @@
+<html>
+<head>
+    <title>《說文解字》刻本關係圖</title>
+</head>
+<body>
+<h1>《說文解字》刻本關係圖</h1>
+
+<div id="mynetwork"></div>
+<script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<!--
+  Including other packages like Vis Timeline or Vis Graph3D here won't work.
+  You need the peer build to do that.
+-->
+
+<script type="text/javascript">
+  // create an array with nodes
+  var nodes = new vis.DataSet([
+    { id: "sbck", font: { multi: "md"}, label: "*四部叢刊初編本* 15卷\n題景「日本岩崎氏靜嘉堂藏北宋刊本」\n 1920 年代" },
+    { id: "xgycs", font: { multi: "md"},label: "*續古逸叢書本*\n題景「日本岩崎氏靜嘉堂藏本」\n 1920 年代" },
+    { id: "ydwxb", font: { multi: "md"},label: "*元代晚修本*\n元代末年修版" },
+    { id: "ydzxb", font: { multi: "md"},label: "*元代早修本*\n元代大德年間修版" },
+    { id: "ywcb", font: { multi: "md"},label: "*葉萬影抄本*\n明末清初" },
+    { id: "nsxzb",font: { multi: "md"}, label: "*南宋刻小字本*\n南宋孝宗時刋刻"},
+    { id: "bsjb", font: { multi: "md"},label: "*北宋國子監本*\n元卽雍熙三年徐鉉校定説文解字"},
+    { id: "mwyyp", font: { multi: "md"},label: "*明刻說文解字五音韻譜*"}
+  ]);
+
+  // create an array with edges
+  var edges = new vis.DataSet([
+    { from: "ydzxb", to: "ydwxb" , arrows : "to"},
+    { from: "ydwxb", to: "sbck" , arrows : "to" , label : "描改影印"},
+    { from: "ydwxb", to: "xgycs" , arrows : "to", label : "描改影印" },
+    { from: "ydwxb", to: "ywcb" , arrows : "to" },
+    { from: "nsxzb", to: "ydzxb" , arrows : "to" },
+    { from: "bsjb", to: "nsxzb" , arrows : "to" },
+
+  ]);
+
+  // create a network
+  var container = document.getElementById("mynetwork");
+  var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+        nodes: {
+          shape: "box",
+        },
+      };
+  var network = new vis.Network(container, data, options);
+</script>
+
+</body>
+</html>

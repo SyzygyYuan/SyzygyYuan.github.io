@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算学 Mathematics,讨论班 Seminar,遍历论 Ergodic Theory," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概念回顾 非奇异映射. $\mu(T^{-1}(A))&#x3D;0$ iff $\mu(A)&#x3D;0$. 保持测度的. $\mu(T^{-1}(A))&#x3D;\mu(A)$. 保测一定非奇异. 徘徊集. $A\in\mathcal{F}$，$\forall 0\le n&lt; m$, $\mu(T^{-n}A\cap T^{-m}A)&#x3D;0$. 保守映射. $A$ 徘徊则 $\mu(A)&#x3D;0$. 遍历的. $\mu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="遍历论讨论班 第二次 回复定理・遍历性">
+<meta property="og:url" content="https://syzygyyuan.github.io/2022/09/26/ergodic-theory-seminar-2/index.html">
+<meta property="og:site_name" content="亂齋襍志">
+<meta property="og:description" content="概念回顾 非奇异映射. $\mu(T^{-1}(A))&#x3D;0$ iff $\mu(A)&#x3D;0$. 保持测度的. $\mu(T^{-1}(A))&#x3D;\mu(A)$. 保测一定非奇异. 徘徊集. $A\in\mathcal{F}$，$\forall 0\le n&lt; m$, $\mu(T^{-n}A\cap T^{-m}A)&#x3D;0$. 保守映射. $A$ 徘徊则 $\mu(A)&#x3D;0$. 遍历的. $\mu">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-09-26T07:37:29.000Z">
+<meta property="article:modified_time" content="2022-12-11T14:23:01.152Z">
+<meta property="article:author" content="Syzygy Yuan">
+<meta property="article:tag" content="算学 Mathematics">
+<meta property="article:tag" content="讨论班 Seminar">
+<meta property="article:tag" content="遍历论 Ergodic Theory">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://SyzygyYuan.github.io/2022/09/26/ergodic-theory-seminar-2/"/>
+
+
+
+
+
+  <title>遍历论讨论班 第二次 回复定理・遍历性 | 亂齋襍志</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">亂齋襍志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">井ヲ掘ルヿ九仞、而モ泉ニ及バザレバ、猶ホ井ヲ棄ツト為ス也</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://SyzygyYuan.github.io/2022/09/26/ergodic-theory-seminar-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="亂齋襍志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">遍历论讨论班 第二次 回复定理・遍历性</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-09-26T15:37:29+08:00">
+                2022-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概念回顾"><a href="#概念回顾" class="headerlink" title="概念回顾"></a>概念回顾</h1><ul>
+<li><strong>非奇异映射</strong>. $\mu(T^{-1}(A))=0$ iff $\mu(A)=0$.</li>
+<li><strong>保持测度的</strong>. $\mu(T^{-1}(A))=\mu(A)$. 保测一定非奇异.</li>
+<li><strong>徘徊集</strong>. $A\in\mathcal{F}$，$\forall 0\le n&lt; m$, $\mu(T^{-n}A\cap T^{-m}A)=0$.</li>
+<li><strong>保守映射</strong>. $A$ 徘徊则 $\mu(A)=0$.</li>
+<li><strong>遍历的</strong>. $\mu(A\triangle T^{-1}A)=0$ 则 $\mu(A)=0$ 或 $\mu(A^c)=0$. </li>
+</ul>
+<h1 id="回复定理"><a href="#回复定理" class="headerlink" title="回复定理"></a>回复定理</h1><p><strong>Poincaré 回复定理</strong>. 在<em>概率</em>空间中，$T$ 保持测度，<br>$\mu(B)&gt;0$，则 $B$ 中几乎处处的点是回复的，即</p>
+<script type="math/tex; mode=display">
+\mu(\{x\in B\mid \exists n, T^nx\in B\})=\mu(B).</script><p><strong>推论</strong>. 几乎处处的点回复无穷多次，即</p>
+<script type="math/tex; mode=display">
+\mu(\{x\in B\mid T^n x\in B \text{ 无穷多次}\})=\mu(B).</script><p><strong>证明</strong>. 想证明的是</p>
+<script type="math/tex; mode=display">
+\mu(B\cap \bigcup_{n\ge 1} T^{-n}B)=\mu(B).</script><p>这等价于对于任意 $k$，</p>
+<script type="math/tex; mode=display">
+\mu(T^{-k}B\cap \bigcup_{n\ge k+ 1} T^{-n}B)=\mu(B).</script><p>为此我们观察 $C<em>n=\bigcup</em>{k\ge n} T^{-k}B$. 它是下降列，所以对于 $\varepsilon&gt;0$，$\mu(C<em>n\setminus C</em>{n+1})&lt;\varepsilon$.<br>我们将集合的分解 $C<em>n=C</em>{n+1}\cup D$ 交 $T^{-n}B$，则可证明.</p>
+<p>对于推论，我们把待证的集写为</p>
+<script type="math/tex; mode=display">
+\bigcap_{t\ge 1}\{B\text{的 }t\text{-回复点}\}.</script><p>$t$-回复点指：正向至少 $t$ 次回到 $B$ 中的点.</p>
+<p>我们对 $t$ 归纳，证明 $B$ 中几乎是 $t$-回复点，$t=1,\ldots$ $t=1$ 是已证明的.</p>
+<p>记 </p>
+<script type="math/tex; mode=display">
+C_k=\bigcup_{n\ge k} A_n, A_n=T^{-n}B\cap \bigcup_{n+1\le a_1<\cdots<a_t},</script><p>我们有 $T^{-k}A<em>n=A</em>{n+k}, T^{-k}C<em>n=C</em>{n+k}$.<br>仍用下降列的方法，得到 $n$，$A<em>n$ 和 $A_n\cap C</em>{n+1}$ 的测度只差 $\varepsilon&gt;0$.<br>由归纳假设 $A<em>0\sim B$，从而 $A_n\sim T^{-n}B$，<br>从而 $T^{-n}B\cap C</em>{n+1}$ 也约等于 $B$. 取极限得其交也的 $B$ 等测证毕.</p>
+<p>把 Poincaré 回复定理中的有限+保测换成保守，是 Halmos 回复定理的特例.</p>
+<p><strong>Halmos 回复定理</strong>. 对于测度空间的可测集 $A$，下面性质等价：</p>
+<ol>
+<li>对于所有徘徊集 $W$，$\mu(A\cap W)=0$；</li>
+<li>对于所有可测子集 $B\subset A$，<script type="math/tex; mode=display">
+\mu(\{x\in B\mid T^n x\in B \text{ 无穷多次}\})=\mu(B).</script></li>
+</ol>
+<p>一点观察：确实能推出 Poincaré 回复定理. 性质 1 是可以继承的. 2 推出 1 比较容易. 因为取 $B=A\cap W$ 为正测，则 $B$<br>也徘徊. 对于所有 $n&lt;m, \mu(T^{-n}B\cap T^{-m}B)=0$. 所以 $\mu(B\cap \cup T^{-m}(B))=0$.</p>
+<p>现在从 1 推出 2. 我们先证明 $A$ 几乎处处回复一次. 这最后和下面的遍历性证明一样，归结于交是空. 然后归纳到无穷多次.</p>
+<h1 id="遍历性"><a href="#遍历性" class="headerlink" title="遍历性"></a>遍历性</h1><p><strong>定理</strong>. 保守+遍历⇒对正测 $A$ 总有 $\mu(X\setminus \bigcup_{n\ge 0} T^{-n}A)=0$. （只要求概率空间，假设 $\sigma$-有限，并且我们假设了非奇异）</p>
+<p>可能类似于 01 律的证明.</p>
+<p><strong>证明</strong>. 我们观察什么叫<em>遍历性</em>，故希望证明<br>$\mu((\cup<em>{n\ge 0} T^{-n}A)^c)=0$. 因为 $\mu(A)&gt;0$，<br>所以我们希望证明对称差零测，而对称差为 $\mu(A\setminus<br>\cup</em>{n\ge 1} T^{-n}A)$. 为证它零测，我们再回忆什么叫<em>保守性</em>，我们希望证明 $A\setminus<br>\cup_{n\ge 1} T^{-n}A=B$ 是徘徊的，这是显然的，其实<br>$B\cap T^{-m} B=\varnothing$. （我们用了非奇异）</p>
+<p><strong>遍历性的等价定义</strong>. 即上述命题等价于遍历，也等价于<br>$\mu(A)\mu(B)&gt;0$ 推出存在 $n$ 使 $\mu(T^{-n}A\cap B)=0$.</p>
+<p>一个是显然的，我们从 $\mu(X\setminus \bigcup<em>{n\ge 0} T^{-n}A)=0$ 有 $\mu(B\setminus \bigcup</em>{n\ge 0} T^{-n}A)=0$.<br>因为 $\mu(B)&gt;0$，</p>
+<p>另一个方向，我们设 $A$ 破坏遍历性，$\mu(A\triangle T^{-1}A)=0$，而 $\mu(A)\mu(A^c)&gt;0$. 但是从 $\mu(A\triangle T^{-1}A)=0$ 可推出 $\mu(T^{-k}A\triangle T^{-k-1}A)=0$，从而<br>$\mu(T^{-n}A\triangle A)=0$. 这矛盾于我们取 $B=A^c$ 时的结论.</p>
+<p><strong>定理 2.2.2</strong>. 测度空间上遍历性可以等价于，<br>任何复可测 $f$，$f\circ T=f$ a.e.，则 $f$ 是常数 a.e.，对于概率空间，还可要求 $f$ 只在 $L^2$ 中取.</p>
+<p><strong>证明</strong>. 一个方向设 $A$ 破坏遍历性，则取 $A$ 的示性函数. 另一方面，我们发现几乎处处是常数等价于对于任意 $c$，$A_c={f\ge c}$ 和其补必有一者是零测的. 要证明几乎处处是常数，只要证明 $\mu(A_c\triangle T^{-1}A_c)=0$，但是这个直接从<br>$\mu(f\ne U_Tf)=0$ 得到. 对于概率空间，所有示性函数都是 $L^2$ 的，则证.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AE%97%E5%AD%A6-Mathematics/" rel="tag"># 算学 Mathematics</a>
+          
+            <a href="/tags/%E8%AE%A8%E8%AE%BA%E7%8F%AD-Seminar/" rel="tag"># 讨论班 Seminar</a>
+          
+            <a href="/tags/%E9%81%8D%E5%8E%86%E8%AE%BA-Ergodic-Theory/" rel="tag"># 遍历论 Ergodic Theory</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/09/26/ergodic-theory-seminar-1/" rel="next" title="遍历论讨论班 第一次 基本概念・Poincaré 回复定理">
+                <i class="fa fa-chevron-left"></i> 遍历论讨论班 第一次 基本概念・Poincaré 回复定理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/10/03/ergodic-theory-seminar-3/" rel="prev" title="测度论讨论班 第三次">
+                测度论讨论班 第三次 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://hulenkius.vercel.app/" target="_blank" title="遠見齋">
+                      
+                        <i class="fa fa-fw fa-globe"></i>遠見齋</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zi.tools/" target="_blank" title="字統">
+                      
+                        <i class="fa fa-fw fa-globe"></i>字統</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.bananaspace.org/" target="_blank" title="香蕉空间">
+                      
+                        <i class="fa fa-fw fa-globe"></i>香蕉空间</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stacks.math.columbia.edu/" target="_blank" title="叠计划">
+                      
+                        <i class="fa fa-fw fa-globe"></i>叠计划</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E5%9B%9E%E9%A1%BE"><span class="nav-number">1.</span> <span class="nav-text">概念回顾</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E5%A4%8D%E5%AE%9A%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">回复定理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">遍历性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script type="text/javascript">
+    s=document.getElementsByClassName("han_ext");
+    for(i=0;i<s.length;i++){
+        s[i].innerHTML='<a target="_blank" rel="noopener" href="https://zi.tools/zi/'+s[i].innerText+'" style="cursor: help; border-bottom: 0px;">'+s[i].innerHTML
+                        +"</a>";
+    }
+</script>
+<div class="copyright">&copy; 2022 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Syzygy Yuan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
