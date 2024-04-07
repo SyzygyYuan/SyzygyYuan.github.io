@@ -39,17 +39,9 @@
 		      ]
 		      await navigator.clipboard.write(data).then(
 		        () => {
-		          Message({
-		            type: 'success',
-		            message: "复制成功"
-		          })
 		          console.log("Copied to clipboard successfully!");
 		        },
 		        () => {
-		          Message({
-		            type: 'error',
-		            message: "复制失败"
-		          })
 		          console.error("Unable to write to clipboard.");
 		        }
 		      );
