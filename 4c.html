@@ -6,14 +6,16 @@
 </head>
 
 <body>
-	<input id="valText" value="不戴套不算艹"/><button id="btnGenerate">生成</button><div>
+	<input id="valText" value="不戴套不算艹"/><input id="valSize" type="number" size="3" style="width:6ex;" value="20"/>px<button id="btnGenerate">生成</button><button id="btnCopy">复制</button><div>
 	<canvas id="myCanvas" width="496" height="409">
 你的浏览器不支持canvas!
 	</canvas></div>
 	<img id="imgBg" src="4c.png" width="496" height="409" alt="" style="display:none;"/> <script type="text/javascript">
 	var cav = document.getElementById('myCanvas');
 	var btnGenerate = document.getElementById('btnGenerate');
+	var btnCopy = document.getElementById('btnCopy');
 	var valText = document.getElementById("valText");
+	var valSize = document.getElementById("valSize");
 	//var canvas = document.createElement('canvas');
 	if(cav.getContext){
 		var ctx = cav.getContext('2d');
@@ -21,21 +23,38 @@
 		img.onload = function() {
 			btnGenerate.onclick = function(){
 				ctx.drawImage(img,0,0);
-				ctx.font="20px sans-serif";
-				ctx.fillText(valText.value,112,81);
+				ctx.font=valSize.value.toString()+"px sans-serif";
+				var h=ctx.measureText(valText.value).fontBoundingBoxAscent;
+				ctx.fillText(valText.value,112,56+h,150);
 			}
 			btnGenerate.onclick()
 		} 
-//		ctx.beginPath()//开始绘制
-//		ctx.moveTo(20,20) // 设置起点
-//		ctx.lineTo(200,20) // 设置目标点
-//		ctx.lineWith=1.0   //设置线宽
-//		ctx.strokeStyle='#CC0000' //设置线的颜色
-//		ctx.stroke()   //线着色  线变得可见
-//		ctx.textAlign = "center" //对齐方式
-//		ctx.fillStyle = "#008600" //填充颜色
-//		ctx.fillText = ("text",20,20) //设置内容及坐标位置
-//		ctx.strokeText =("text",20,50) //空心字
+		  btnCopy.onclick = () => {
+		    cav.toBlob(async (blob) => {
+		      console.log(blob);
+		      const data = [
+		        new ClipboardItem({
+		          [blob.type]: blob,
+		        }),
+		      ]
+		      await navigator.clipboard.write(data).then(
+		        () => {
+		          Message({
+		            type: 'success',
+		            message: "复制成功"
+		          })
+		          console.log("Copied to clipboard successfully!");
+		        },
+		        () => {
+		          Message({
+		            type: 'error',
+		            message: "复制失败"
+		          })
+		          console.error("Unable to write to clipboard.");
+		        }
+		      );
+		    });
+		  };
 		console.log("OK!");
 	}else{
 		console.log("Naze!");
