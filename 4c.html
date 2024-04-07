@@ -6,7 +6,9 @@
 </head>
 
 <body>
-	文本：<input id="valText" value="不戴套不算艹"/>字号：<input id="valSize" type="number" size="3" style="width:6ex;" value="20"/>px 坐标：(<input id="valX" type="number" size="3" style="width:6ex;" value="112"/>,<input id="valY" type="number" size="3" style="width:6ex;" value="56"/>)<button id="btnGenerate">生成</button><button id="btnCopy">复制</button><div>
+	文本：<input id="valText" value="不戴套不算艹"/>字号：<input id="valSize" type="number" size="3" style="width:6ex;" value="20"/>px
+	坐标：(<input id="valX" type="number" size="3" style="width:6ex;" value="112"/>,<input id="valY" type="number" size="3" style="width:6ex;" value="56"/>)
+	<button id="btnGenerate">生成</button><button id="btnCopy">复制</button><button id="btnSave">保存</button><div>
 	<canvas id="myCanvas" width="496" height="409">
 你的浏览器不支持canvas!
 	</canvas></div>
@@ -14,6 +16,7 @@
 	var cav = document.getElementById('myCanvas');
 	var btnGenerate = document.getElementById('btnGenerate');
 	var btnCopy = document.getElementById('btnCopy');
+	var btnSave = document.getElementById('btnSave');
 	var valText = document.getElementById("valText");
 	var valSize = document.getElementById("valSize");
 	var valX = document.getElementById("valX");
@@ -30,8 +33,7 @@
 				ctx.fillText(valText.value,parseInt(valX.value),parseInt(valY.value)+h,150);
 			}
 			btnGenerate.onclick()
-		} 
-		  btnCopy.onclick = () => {
+					  btnCopy.onclick = () => {
 		    cav.toBlob(async (blob) => {
 		      console.log(blob);
 		      const data = [
@@ -49,6 +51,18 @@
 		      );
 		    });
 		  };
+			btnSave.onclick = function(){
+				  // 创建一个 a 标签，并设置 href 和 download 属性
+				  const el = document.createElement('a');
+				  // 设置 href 为图片经过 base64 编码后的字符串，默认为 png 格式
+				  el.href = cav.toDataURL();
+				  el.download = '表情.png';
+				  
+				  // 创建一个点击事件并对 a 标签进行触发
+				  const event = new MouseEvent('click');
+				  el.dispatchEvent(event);
+			}
+		} 
 		console.log("OK!");
 	}else{
 		console.log("Naze!");
