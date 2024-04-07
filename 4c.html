@@ -6,7 +6,7 @@
 </head>
 
 <body>
-	<input id="valText" value="不戴套不算艹"/><input id="valSize" type="number" size="3" style="width:6ex;" value="20"/>px<button id="btnGenerate">生成</button><button id="btnCopy">复制</button><div>
+	文本：<input id="valText" value="不戴套不算艹"/>字号：<input id="valSize" type="number" size="3" style="width:6ex;" value="20"/>px 坐标：(<input id="valX" type="number" size="3" style="width:6ex;" value="112"/>,<input id="valY" type="number" size="3" style="width:6ex;" value="56"/>)<button id="btnGenerate">生成</button><button id="btnCopy">复制</button><div>
 	<canvas id="myCanvas" width="496" height="409">
 你的浏览器不支持canvas!
 	</canvas></div>
@@ -16,6 +16,8 @@
 	var btnCopy = document.getElementById('btnCopy');
 	var valText = document.getElementById("valText");
 	var valSize = document.getElementById("valSize");
+	var valX = document.getElementById("valX");
+	var valY = document.getElementById("valY");
 	//var canvas = document.createElement('canvas');
 	if(cav.getContext){
 		var ctx = cav.getContext('2d');
@@ -23,9 +25,9 @@
 		img.onload = function() {
 			btnGenerate.onclick = function(){
 				ctx.drawImage(img,0,0);
-				ctx.font=valSize.value.toString()+"px sans-serif";
+				ctx.font=valSize.value+"px sans-serif";
 				var h=ctx.measureText(valText.value).fontBoundingBoxAscent;
-				ctx.fillText(valText.value,112,56+h,150);
+				ctx.fillText(valText.value,parseInt(valX.value),parseInt(valY.value)+h,150);
 			}
 			btnGenerate.onclick()
 		} 
