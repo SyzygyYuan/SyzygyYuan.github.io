@@ -9,10 +9,10 @@ function ChangeChar(){
     var i=0;   //getElementById('')
     var ch=document.getElementById('character').value;
     s=ch;
-    for(i=0xfe01;i<0xfe10;i++)
-        s=s+ch+'&#x'+i.toString(16)+';';
+    for(i=0xfe00;i<0xfe10;i++)
+        s=s+"<ruby>"+ch+'&#x'+i.toString(16)+';<rt>(U+'+i.toString(16)+')</rt></ruby>';
     for(i=0xe0100;i<0xe01f0;i++)
-        s=s+ch+'&#x'+i.toString(16)+';';
+        s=s+"<ruby>"+ch+'&#x'+i.toString(16)+';<rt>(U+'+i.toString(16)+')</rt></ruby>';
     //alert(s);
     document.getElementById('display').innerHTML=s;
 }
@@ -27,6 +27,7 @@ function ChangeChar(){
 .ss05 { font-feature-settings: "ss05"; }
 .ss06 { font-feature-settings: "ss06"; }
 .ss07 { font-feature-settings: "ss07"; }
+rt {font-size:25%; font-family:"Courier New"};
 </style>
 </head>
 
